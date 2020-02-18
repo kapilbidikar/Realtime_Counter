@@ -25,7 +25,11 @@ public  class MainActivity extends Activity  {
 
     public static final String SHARED_PREFS = "SharedPrefs";
     public static final String  COUNT= "0";
+    public static final String TITLE = "Title";
+    public static final String SUBTITLE = "Subtitle";
     private String count1;
+    private String title1;
+    private String subtitle;
 
 
 
@@ -133,6 +137,8 @@ public  class MainActivity extends Activity  {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(COUNT,count.getText().toString());
+        editor.putString(TITLE,intro.getText().toString());
+        editor.putString(SUBTITLE,title.getText().toString());
         editor.apply();
         Toast.makeText(this,"data saved",Toast.LENGTH_SHORT).show();
     }
@@ -165,11 +171,16 @@ public  class MainActivity extends Activity  {
     public void loaddata(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         count1 = sharedPreferences.getString(COUNT,"0");
+        title1 = sharedPreferences.getString(TITLE,"TITLE");
+        subtitle = sharedPreferences.getString(SUBTITLE,"SUBTITLE");
 
     }
 
     public void updateviews(){
         count.setText(count1);
+        intro.setText(title1);
+        title.setText(subtitle);
+
 
 
     }
